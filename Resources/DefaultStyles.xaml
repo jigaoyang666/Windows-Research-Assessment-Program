@@ -1,0 +1,51 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <Style x:Key="baseControlStyle" TargetType="{x:Type Control}">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="12" />
+
+    </Style>
+
+    <Style TargetType="{x:Type Button}" BasedOn="{StaticResource baseControlStyle}">
+        <Setter Property="Margin" Value="4" />
+        <Setter Property="FontWeight" Value="Bold" />
+        <Setter Property="BorderBrush" Value="Transparent" />
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Background" Value="{StaticResource lightBlueBrush}"/>
+        <Setter Property ="Foreground" Value="White"/>
+        
+        <Style.Triggers>
+            <Trigger Property="Hyperlink.IsMouseOver" Value="true">
+                <Setter Property = "Foreground" Value="{StaticResource DarkGrayBrush}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+       
+    
+    <Style TargetType="{x:Type Label}" BasedOn="{StaticResource baseControlStyle}">
+        <Setter Property="HorizontalAlignment" Value="Right" />
+        <Setter Property="FontWeight" Value="Bold" />
+        
+    </Style>
+
+    <Style TargetType="{x:Type TabItem}">
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="true">
+                <Setter Property="FontWeight" Value="Bold"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+    
+    <Style TargetType="{x:Type TextBox}">
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+    <Style TargetType="{x:Type ComboBox}">
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Margin" Value="2"/>
+    </Style>
+    
+    </ResourceDictionary>

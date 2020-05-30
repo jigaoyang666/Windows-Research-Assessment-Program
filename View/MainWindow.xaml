@@ -1,0 +1,187 @@
+﻿<Window x:Class="RAP.View.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:data="clr-namespace:RAP.Control"
+        mc:Ignorable="d"
+        Title="ResearcherAssessmentPlatform" Height="672.246" Width="1002">
+
+    <Viewbox>
+        <Border Background="{StaticResource lightBlueBrush}" CornerRadius="6" Margin="4" Padding="4">
+
+            <Grid HorizontalAlignment="Left" Margin="0,0,0,0.5" Width="1000">
+                <TabControl HorizontalAlignment="Left" Height="635" VerticalAlignment="Top" Width="997" SelectedIndex="0">
+                    <TabItem Header="Researcher List">
+                        <Grid Background="#FFE5E5E5" Height="618" VerticalAlignment="Top" Margin="0,1,0.2,-114">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="58*"/>
+                                <ColumnDefinition Width="933*"/>
+                            </Grid.ColumnDefinitions>
+                            <ComboBox x:Name="ComboList" HorizontalAlignment="Left" Margin="39.5,34,0,0" VerticalAlignment="Top" Width="140" SelectedIndex="0" AllowDrop="True" SelectionChanged="ComboList_SelectionChanged" Loaded="ComboList_LoadLevel" Grid.Column="1">
+                            </ComboBox>
+                            <ListBox x:Name="ReListBox" HorizontalAlignment="Left" Height="539" Margin="12,61,0,0" VerticalAlignment="Top" Width="225" SelectionChanged="ReListBox_SelectionChanged" Loaded="ReListBox_Loaded" Grid.ColumnSpan="2"/>
+                            <TextBox x:Name="SearchBox" HorizontalAlignment="Left" Height="21" Margin="44.5,5,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="135" KeyUp="TextBox_KeyUp" Grid.Column="1"/>
+                            <StackPanel x:Name="StackDetail" HorizontalAlignment="Left" Margin="208.5,10,0,0" Width="380" Height="328" VerticalAlignment="Top" Grid.Column="1">
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Name:" Margin="0,0,0,0.4" Width="47" Height="25"/>
+                                    <Label Content="{Binding Name}" Margin="0,0,0,-0.2" Width="148" Height="25"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Title:" Margin="0,0,0,0.4" Width="47" Height="25"/>
+                                    <Label Content="{Binding Path=Title}" Margin="0,0,0,0.4" Width="108" Height="25"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Unit:" Margin="0,0,0,0.4" Width="47" Height="25"/>
+                                    <Label Content="{Binding Path=School}" Margin="0,0,0,0.4" Width="108" Height="25"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Campus:" Margin="0,0,0,-0.2" Width="62" Height="25"/>
+                                    <Label Content="{Binding Path=Campus}" Margin="0,0,0,0.4" Width="108" Height="25"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Email:" Margin="0,0,0,0.4" Width="47" Height="25"/>
+                                    <Label Content="{Binding Path=Email}" Margin="0,0,0,-0.2" Width="177" Height="25"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Current Job:" Margin="0,0,0,-0.2" Width="81" Height="25"/>
+                                    <Label Content="{Binding Path=CurrentJob}" Margin="0,0,0,-0.2" Width="141" Height="25"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Commenced with institution:" Margin="0,0,0,-0.2" Width="176" Height="25"/>
+                                    <Label x:Name="EarliestPositionTime" Content="{Binding Path=EarliestPosition}" Margin="0,0,0,0.4" Width="108" Height="25"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Commenced current position:" Margin="0,0,0,-0.2" Width="184" Height="25"/>
+                                    <Label x:Name="CurrentPositionTime" Content="{Binding Path=CurrentPosition}" Margin="0,0,0,-0.2" Width="117" Height="25"/>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Button x:Name="Position" Content="Previous positions" Width="117" Margin="5,0,0,-0.2" RenderTransformOrigin="0.5,0.504" Click="Position_Click">
+                                    </Button>
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Tenure:" Margin="0,0,0,-0.2" Width="53" Height="25"/>
+                                    <Label Content="{Binding Path=Tenure}" Margin="0,0,0,-0.2" Width="40" Height="25"/>
+                                    <Label Content="years" Margin="0,0,0,-0.2" Width="40" Height="25"/>
+                                    <Label Content="Publications:" Margin="0,0,0,-0.2" Width="84" Height="25"/>
+                                    <Label Content="{Binding Path=TotalPublications}" Margin="0,0,0,-0.2" Width="35" Height="25"/>
+                                    <Button x:Name="Count" Content="Cumulative Count" Width="112" Margin="5,0,0,-0.2" Height="25" Click="Count_Click" />
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="3-year average:" Margin="0,0,0,-2.2" Width="99" Height="27"/>
+                                    <Label Content="{Binding Path=Average}" Margin="0,0,0,-0.2" Width="33" Height="25"/>
+                                    <Label Content="Performance:" Margin="0,0,0,-0.2" Width="87" Height="25"/>
+                                    <Label Content="{Binding Path=Performance}" Margin="0,0,0,-0.2" Width="40" Height="25"/>
+                                    <Label Content="%" />
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Supervision:" Margin="0,0,0,-0.2" Width="82" Height="25"/>
+                                    <Label Content="{Binding Path=Supervisions}" Margin="0,0,0,-0.2" Width="50" Height="25"/>
+                                    <Button x:Name="ShowName" Content="Show Name" Width="80" Margin="5,0,0,-0.2" Height="25" VerticalAlignment="Top" Click="ShowName_Click" />
+                                </StackPanel>
+                                <StackPanel Height="25" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="Degree:" Margin="0,0,0,-2.2" Width="70" Height="27"/>
+                                    <Label Content="{Binding Path=Degree}" Margin="0,0,0,-0.2" Width="60" Height="25"/>
+                                    <Label Content="Supervisor:" Margin="0,0,0,-0.2" Width="77" Height="25"/>
+                                    <Label Content="{Binding Path=SupervisorName}" Margin="0,0,0,-0.2" Width="145" Height="25"/>
+                                </StackPanel>
+                            </StackPanel>
+
+                            <DataGrid x:Name="dataGridforpublication" ItemsSource="{Binding}" AutoGenerateColumns="False" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True" Margin="208.5,371,344.8,18" 
+                              IsReadOnly="True" SelectionChanged="ChoosePublication" Grid.Column="1">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Year" Width="40" Binding="{Binding Year}"/>
+                                    <DataGridTextColumn Header="Title" Width="*" Binding="{Binding Title}"/>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+
+                            <Image x:Name="Photo" HorizontalAlignment="Left" Height="145" Margin="438.5,25,0,0" VerticalAlignment="Top" Width="130" Grid.Column="1"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="12,36,0,0" TextWrapping="Wrap" Text="Show Level:" VerticalAlignment="Top" Height="21" Width="75" Grid.ColumnSpan="2"/>
+                            <TextBlock HorizontalAlignment="Left" Margin="12,6,0,0" TextWrapping="Wrap" Text="Filter by name:" VerticalAlignment="Top" Height="21" Grid.ColumnSpan="2"/>
+
+                            <StackPanel x:Name="PublicationDetail" HorizontalAlignment="Right" Height="461" Margin="0,20,9.8,0" VerticalAlignment="Top" Width="318" Grid.Column="1">
+                                <StackPanel Height="35" Margin="0,0,10,0" Orientation="Horizontal">
+                                    <Label Content="DOI:"/>
+                                    <Label x:Name="DOI" Content="{Binding Path=DOI}"/>
+                                </StackPanel>
+                                <StackPanel Height="60" Orientation="Horizontal" Margin="0,0,0.4,0">
+                                    <!--<Label Content="Title:"/>-->
+                                    <TextBlock TextWrapping="Wrap"  Text="Title:" Margin="0,0,0,0.2" Width="34"/>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=Title}" Margin="0,0,0,0.2" Width="252"/>
+
+                                    <!--<Label Content="{Binding Path=Title}" Margin="0,0,0,0.2" Width="278"/>-->
+
+                                </StackPanel>
+                                <StackPanel Height="35" Orientation="Horizontal">
+                                    <!--<Label Content="Authors:"/>-->
+                                    <TextBlock TextWrapping="Wrap" Text="Authors:" Margin="0,0,0,-0.8" Width="54" />
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=Authors}" Margin="0,0,0,0.2" Width="255"/>
+
+                                    <!--<Label Content="{Binding Path=Authors}" Margin="0,0,0,0.2" Width="258"/>-->
+                                </StackPanel>
+                                <StackPanel Height="35" Orientation="Horizontal">
+                                    <Label Content="Type:"/>
+                                    <Label Content="{Binding Path=Type}" Margin="0,0,0,0.2" Width="203"/>
+                                </StackPanel>
+                                <StackPanel Height="35" Orientation="Horizontal">
+                                    <Label Content="Availablity date:"/>
+
+                                    <!--<TextBlock TextWrapping="Wrap" Text="{Binding Path=CiteAs}" Margin="0,0,0,0.2" Width="258"/>-->
+
+                                    <Label Content="{Binding Path=Availability}" Margin="0,0,0,0.6" Width="206"/>
+
+                                </StackPanel>
+                                <StackPanel Height="35" Orientation="Horizontal">
+                                    <Label Content="Age:"/>
+                                    <Label Content="{Binding Path=Age}" Margin="0,0,0,0.2" Width="47"/>
+                                    <Label Content="days" HorizontalAlignment="Stretch"/>
+                                </StackPanel>
+                                <StackPanel Height="300" Orientation="Horizontal">
+                                    <!--<Label Content="Cite as:"/>-->
+                                    <TextBlock TextWrapping="Wrap" Text="Cite as:" Width="51"/>
+                                    <TextBlock TextWrapping="Wrap" Text="{Binding Path=CiteAs}" Width="261"/>
+
+                                    <!--<Label Content="{Binding Path=CiteAs}" Margin="0,0,0,0.2" Width="134" />-->
+
+                                </StackPanel>
+                            </StackPanel>
+
+                            <StackPanel HorizontalAlignment="Left" Height="33" Margin="208.5,338,0,0" VerticalAlignment="Top" Width="380" Orientation="Horizontal" Grid.Column="1">
+                                <Label Content="Start:" Height="28" FontWeight="Bold" Foreground="{StaticResource darkBlueBrush}"/>
+                                <TextBox x:Name="start_year" Margin="0,0,0,-0.2" Width="77" Height="28"/>
+                                <Label Content="End:" Height="28" FontWeight="Bold" Foreground="{StaticResource darkBlueBrush}"/>
+                                <TextBox x:Name="end_year" Margin="0,0,0,-0.2" Width="77" Height="28"/>
+                                <Button x:Name="PublicationSearch" Content="Search" Foreground="White" Width="72" Height="28" Margin="10,2,0,2.8" Grid.Column="0" Grid.Row="4" BorderBrush="Transparent" Background="{StaticResource lightBlueBrush}" Click="SearchPublications"/>
+                            </StackPanel>
+                        </Grid>
+                    </TabItem>
+                    <TabItem Header="Achievement Report">
+                        <Grid Background="#FFE5E5E5">
+                            <ListBox x:Name="ReportList" HorizontalAlignment="Left" Height="222" Margin="10,10,0,0" VerticalAlignment="Top" Width="213" SelectedIndex="-1" SelectionChanged="ChooseReport">
+                                <ListBoxItem>Poor</ListBoxItem>
+                                <ListBoxItem>Below Expections</ListBoxItem>
+                                <ListBoxItem>Meeting Minumum</ListBoxItem>
+                                <ListBoxItem>Star Performaers</ListBoxItem>
+                            </ListBox>
+                            <DataGrid x:Name="performance" ItemsSource="{Binding}" AutoGenerateColumns="False" ScrollViewer.VerticalScrollBarVisibility="Visible" 
+                              ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.CanContentScroll="True"
+                              IsReadOnly="True" HorizontalAlignment="Left" Height="588" Margin="251,10,0,0" VerticalAlignment="Top" Width="405">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn Header="Performance(%)" Width="110" Binding="{Binding Performance}"/>
+                                    <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Name}"/>
+                                    <DataGridTextColumn Header="Email" Width="*" Binding="{Binding Email}"/>
+
+                                </DataGrid.Columns>
+                            </DataGrid>
+                            <Button x:Name="CopyButton" Content="Copy Email" HorizontalAlignment="Left" Margin="680,12,0,0" VerticalAlignment="Top" Width="75" Click="ButtonCopy_Click"/>
+                        </Grid>
+                    </TabItem>
+                </TabControl>
+
+            </Grid>
+
+        </Border>
+    </Viewbox>
+</Window>
